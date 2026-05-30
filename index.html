@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Troop 3555 Parent App</title>
+
+<style>
+body{
+    font-family:Arial, sans-serif;
+    margin:0;
+    background:#f5efe6;
+}
+header{
+    background:#5b3a29;
+    color:white;
+    padding:20px;
+    text-align:center;
+}
+.container{
+    padding:15px;
+}
+.card{
+    background:white;
+    margin-bottom:15px;
+    padding:15px;
+    border-radius:15px;
+    box-shadow:0 2px 8px rgba(0,0,0,.1);
+}
+h2{
+    color:#2e7d32;
+}
+input, textarea, select{
+    width:100%;
+    padding:10px;
+    margin:8px 0;
+    border-radius:8px;
+    border:1px solid #ccc;
+}
+button{
+    width:100%;
+    padding:12px;
+    background:#2e7d32;
+    color:white;
+    border:none;
+    border-radius:8px;
+    font-size:16px;
+}
+.checklist label{
+    display:block;
+    margin:8px 0;
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h1>🍪 Troop 3555 Brownies</h1>
+    <p>Parent Dashboard App</p>
+</header>
+
+<div class="container">
+
+<div class="card">
+    <h2>📅 Upcoming Meetings</h2>
+    <textarea id="meetings"></textarea>
+</div>
+
+<div class="card">
+    <h2>🎖 Badge Tracker</h2>
+    <div class="checklist">
+        <label><input type="checkbox"> First Aid Badge</label>
+        <label><input type="checkbox"> Outdoor Adventure Badge</label>
+        <label><input type="checkbox"> Crafting Badge</label>
+    </div>
+</div>
+
+<div class="card">
+    <h2>🎉 Event RSVP</h2>
+    <input id="eventName" placeholder="Event Name">
+    <select id="rsvp">
+        <option>Yes</option>
+        <option>No</option>
+        <option>Maybe</option>
+    </select>
+</div>
+
+<div class="card">
+    <h2>🙋 Volunteer Sign-Up</h2>
+    <input id="volunteerName" placeholder="Parent Name">
+    <input id="volunteerJob" placeholder="How can you help?">
+</div>
+
+<div class="card">
+    <h2>💵 Dues Tracker</h2>
+    <input id="dues" placeholder="Amount Paid">
+</div>
+
+<div class="card">
+    <h2>✅ Attendance Tracker</h2>
+    <div class="checklist">
+        <label><input type="checkbox"> Jillian</label>
+        <label><input type="checkbox"> Charlotte</label>
+        <label><input type="checkbox"> Ruby</label>
+        <label><input type="checkbox"> Gabrielle</label>
+    </div>
+</div>
+
+<div class="card">
+    <h2>📸 Photo Upload</h2>
+    <input type="file">
+</div>
+
+<div class="card">
+    <h2>📌 Parent Notes</h2>
+    <textarea id="notes"></textarea>
+</div>
+
+<div class="card">
+    <h2>📞 Contact Leaders</h2>
+    <p>Leader: Add Name</p>
+    <p>Email: Add Email</p>
+    <p>Phone: Add Number</p>
+</div>
+
+<div class="card">
+    <button onclick="saveData()">Save App Data</button>
+</div>
+
+</div>
+
+<script>
+function saveData(){
+    localStorage.setItem("meetings", document.getElementById("meetings").value);
+    localStorage.setItem("notes", document.getElementById("notes").value);
+    localStorage.setItem("eventName", document.getElementById("eventName").value);
+    localStorage.setItem("dues", document.getElementById("dues").value);
+    alert("Saved!");
+}
+
+window.onload = function(){
+    document.getElementById("meetings").value = localStorage.getItem("meetings") || "";
+    document.getElementById("notes").value = localStorage.getItem("notes") || "";
+    document.getElementById("eventName").value = localStorage.getItem("eventName") || "";
+    document.getElementById("dues").value = localStorage.getItem("dues") || "";
+}
+</script>
+
+</body>
+</html>
